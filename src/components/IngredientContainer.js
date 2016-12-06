@@ -8,33 +8,41 @@ class IngredientContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      items:[],
       selectedItems:[]
     }
   }
 
+  componentDidMount() {
+    this._getIngredients();
+  }
     // make ajax call to get all ingredients
     _getIngredients(){
     axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
       let itemsList = data.data
-      this._renderItems(itemsList)
+      this.setState({
+        items: itemsList
+      })
+      console.log(this.state.items);
       }
     )
   }
-    //render ingredients
-    _renderItems(arr) {
-      arr.forEach(function(listItem) {
-        console.log(listItem.name)
-      })
-      console.log(arr);
-  }
+    _selectIngredient() {
+      console.log(this.state.items);
+    }
+
+    _removeIngredient() {
+
+    }
 
   render() {
     return(
       <div>
-        <h2>This is the Ingredient Container</h2>
-
-        <Ingredient />
-
+        <h2>Ingredients</h2>
+        <form>
+          {this.state.items.map((item, i) =>
+          <Ingredient props={item} key={i} selectItem={this._selectIngredient}/>)}
+        </form>
       </div>
     )
   }
