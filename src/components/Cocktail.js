@@ -5,11 +5,12 @@ class Cocktail extends Component {
     return(
       <div>
         <h4>
-          Cocktail
+          <button onClick={this.props.handleClick}>{this.props.data.name}</button>
+          <p>{}</p>
         </h4>
       </div>
     )
   }
 }
 
-export default Cocktail
+export default Cocktail;
