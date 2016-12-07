@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
-import Checkbox from 'rc-checkbox';
 
 class Ingredient extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isChecked:false
+    }
+    this._toggleCheck = this._toggleCheck.bind(this)
+  }
+  _toggleCheck() {
+    console.log(this.props.data.id);
+    let itemId = this.props.data.id;
+    if (this.state.isChecked) {
+      this.props.removeItem(itemId)
+    } else {
+      this.props.selectItem(itemId)
+    }
+    this.setState({
+      isChecked: !this.state.isChecked
+    })
   }
 
- _onChange(e) {
-  console.log('checkbox checked:', (e.target.checked));
-  console.log('id:', this.props.id);
-
-}
   render() {
-    console.log(this.props.props.id);
     return (
       <div>
         <label>
-          <Checkbox onChange={this._onChange} props={this.props.props}/>
-          {this.props.props.name} {this.props.props.id}
+          <input type="checkbox" checked={this.state.isChecked} onChange={this._toggleCheck}/>
+          {this.props.data.name}
         </label>
       </div>
     )

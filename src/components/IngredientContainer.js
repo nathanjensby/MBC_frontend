@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Ingredient from './Ingredient';
 import _ from 'lodash';
 import axios from 'axios';
+import update from 'immutability-helper';
 
 
 class IngredientContainer extends Component {
@@ -9,8 +10,10 @@ class IngredientContainer extends Component {
     super(props);
     this.state = {
       items:[],
-      selectedItems:[]
-    }
+      selectedItems: {}
+      }
+      this._selectIngredient = this._selectIngredient.bind(this)
+      this._removeIngredient = this._removeIngredient.bind(this)
   }
 
   componentDidMount() {
@@ -27,22 +30,30 @@ class IngredientContainer extends Component {
       }
     )
   }
-    _selectIngredient() {
-      console.log(this.state.items);
+    _selectIngredient(item) {
+      // console.log("ingredient selected: ", this.props.id );
+      let oldSelected = this.state.selectedItems
+      const newSelected = update(oldSelected, {$merge:{[item]:true}});
+      this.setState({
+        selectedItems: newSelected
+      })
+      console.log(this.state.selectedItems);
     }
 
-    _removeIngredient() {
-
+    _removeIngredient(item) {
+      console.log("ingredient removed: ", this.props.id);
+      // delete this.state.selectedItems[this.props.id]
     }
 
   render() {
     return(
       <div>
         <h2>Ingredients</h2>
-        <form>
+        <ul>
           {this.state.items.map((item, i) =>
-          <Ingredient props={item} key={i} selectItem={this._selectIngredient}/>)}
-        </form>
+          <Ingredient data={item} key={i} selectItem={this._selectIngredient}
+          removeItem={this._removeIngredient} selectedItems={this.state.selectedItems}/>)}
+        </ul>
       </div>
     )
   }
