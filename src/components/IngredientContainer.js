@@ -14,6 +14,7 @@ class IngredientContainer extends Component {
       }
       this._selectIngredient = this._selectIngredient.bind(this)
       this._removeIngredient = this._removeIngredient.bind(this)
+      this._getIngredients = this._getIngredients.bind(this)
   }
 
   componentDidMount() {
@@ -41,8 +42,8 @@ class IngredientContainer extends Component {
     }
 
     _removeIngredient(item) {
-      console.log("ingredient removed: ", this.props.id);
-      // delete this.state.selectedItems[this.props.id]
+      const key = item
+      delete this.state.selectedItems[key]
     }
 
   render() {
