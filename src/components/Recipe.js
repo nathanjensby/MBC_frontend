@@ -5,14 +5,14 @@ class Recipe extends Component {
   render() {
     return(
       <div>
-        <h2>
-          Recipe
-        </h2>
+        <div className='column-heading' id="recipe-header">
+          <h2>Recipe</h2>
+        </div>
         <ul>
           {this.props.itemsAmounts.map((item, i) =>
-          <li key={i}>{item}</li>)}
+          <li className="recipe-ingredient" key={i}>{item}</li>)}
         </ul>
-        <p>{this.props.recipe.instructions}</p>
+        <p className="instructions">{this.props.recipe.instructions}</p>
       </div>
     )
   }

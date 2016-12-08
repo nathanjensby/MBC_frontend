@@ -16,9 +16,9 @@ class RecipeContainer extends Component {
   render() {
     return(
       <div>
-        <h2>
-          Cocktails
-        </h2>
+        <div className='column-heading'>
+          <h2>Cocktails</h2>
+        </div>
         <div>
           {this.props.recipes.map((recipe, i) =>
           <Cocktail grabRecipeId={this._grabRecipeId} data={recipe} key={i}/>)}

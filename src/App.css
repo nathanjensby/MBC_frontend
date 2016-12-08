@@ -1,5 +1,8 @@
 .App {
-background-color:white}
+background-color:white;
+background-color: rgb(32,19,17);
+color: white;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -7,11 +10,11 @@ background-color:white}
 }
 
 .App-header {
-  background-image: url('../public/liquoredit2.png');
-  background-size: cover;
+  background-image: url('../public/barcartimage.jpg');
+  background-size:cover;
   height: 250px;
   padding: 20px;
-  color: #000000;
+  color: white;
   text-align: center;
   display:flex;
   align-items: center;
@@ -19,7 +22,7 @@ background-color:white}
 }
 .App-header h2 {
   font-size: 500%;
-  text-shadow: 2px 2px #4b42f4;
+  text-shadow: 2px 2px black;
 
 }
 
@@ -34,7 +37,15 @@ background-color:white}
 }
 
 #ingredients {
-  margin-left: 50px;
+  margin-left: 40px;
+}
+
+#recipe-header {
+  text-align: center;
+}
+
+#search {
+  margin: 5px;
 }
 
 .main-column {
@@ -42,12 +53,41 @@ background-color:white}
   border-width: thin;
   border-style: solid;
   margin:5px;
-  padding:5px;
+  padding:10px 20px;
+background-color: rgb(75,73,70);}
+
+.column-heading {
+  border-width: medium;
+  border-style: groove;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+  background-color: rgb(104,56,26);
+}
+
+.column-heading h2 {
+  color:white;
+  padding: 5px 20px;
+
+}
+
+.ingredient {
+  margin: 5px 0 0 0;
+}
+
+.recipe-ingredient{
+ font-size: 20px;
+}
+
+.instructions {
+ font-size: 18px;
+ margin-top: 25px;
 }
 
 .cocktail-button {
-  background-color: #4b42f4;
-  border-radius: 3px;
+  background-color: #850000;
+  border-radius: 10px;
   color: white;
   padding:10px;
 }

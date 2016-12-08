@@ -23,7 +23,7 @@ class Ingredient extends Component {
 
   render() {
     return (
-      <div>
+      <div className="ingredient">
         <label>
           <input type="checkbox" checked={this.state.isChecked} onChange={this._toggleCheck}/>
           {this.props.data.name}
