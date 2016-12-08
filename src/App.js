@@ -90,12 +90,20 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to MyBarCart</h2>
+          <h2>MyBarCart</h2>
         </div>
         <div id="main-container">
-          <IngredientContainer selectItem={this._addItemToSelected} removeItem={this._removeItemFromSelected}/>
-          <RecipeContainer recipes={this.state.recipes} handleRecipeClick={this._handleRecipeClick}/>
-          <Recipe  recipe={this.state.selectedRecipe} itemsAmounts={this.state.itemsAmounts}/>
+          <div className="row">
+            <div id="ingredients" className="main-column">
+              <IngredientContainer selectItem={this._addItemToSelected} removeItem={this._removeItemFromSelected}/>
+            </div>
+            <div className="main-column">
+              <RecipeContainer  recipes={this.state.recipes} handleRecipeClick={this._handleRecipeClick}/>
+            </div>
+            <div className="main-column">
+              <Recipe  recipe={this.state.selectedRecipe} itemsAmounts={this.state.itemsAmounts}/>
+            </div>
+          </div>
         </div>
       </div>
     );

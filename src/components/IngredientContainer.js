@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ingredient from './Ingredient';
+// import Search from './Search';
 import _ from 'lodash';
 import axios from 'axios';
 
@@ -8,11 +9,14 @@ class IngredientContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:[]
+      items:[],
+      text: ''
       }
       this._selectIngredient = this._selectIngredient.bind(this)
       this._removeIngredient = this._removeIngredient.bind(this)
       this._getIngredients = this._getIngredients.bind(this)
+      this._handleSearch = this._handleSearch.bind(this)
+      this._loadItems = this._loadItems.bind(this)
   }
 
   componentDidMount() {
@@ -21,11 +25,8 @@ class IngredientContainer extends Component {
     // make ajax call to get all ingredients
     _getIngredients(){
     axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
-      let itemsList = data.data
-      this.setState({
-        items: itemsList
-      })
-      console.log(this.state.items);
+      let items = data.data
+      this.setState({ items })
       }
     )
   }
@@ -37,15 +38,50 @@ class IngredientContainer extends Component {
       this.props.removeItem(item)
     }
 
+    _handleSearch(e) {
+
+      var text = e.target.value
+      this.setState({
+        text
+      }, function() {
+        console.log("state update: ", this.state.text);
+      })
+    }
+
+    _loadItems() {
+      let currentText = this.state.text
+
+      if (currentText === '') {
+        return (
+          this.state.items.map((item, i) =>
+          <Ingredient data={item} key={i} selectItem={this._selectIngredient}
+          removeItem={this._removeIngredient} selectedItems={this.state.selectedItems} />))
+        }
+
+      else {
+           var filteredResults = this.state.items.filter(function(item) {
+           return (
+             item.name.toLowerCase().startsWith(currentText)
+           )})
+         return (
+          filteredResults.map((item, i) =>
+         <Ingredient data={item} key={i} selectItem={this._selectIngredient}
+         removeItem={this._removeIngredient} selectedItems={this.state.selectedItems} />))
+      }
+    }
+
+
   render() {
+
     return(
       <div>
         <h2>Ingredients</h2>
-        <ul>
-          {this.state.items.map((item, i) =>
-          <Ingredient data={item} key={i} selectItem={this._selectIngredient}
-          removeItem={this._removeIngredient} selectedItems={this.state.selectedItems}/>)}
-        </ul>
+        <div>
+          <input type="text" placeholder='Search' ref="search" value={this.state.text} onChange={this._handleSearch}/>
+        </div>
+        <div>
+          {this._loadItems()}
+        </div>
       </div>
     )
   }

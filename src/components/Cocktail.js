@@ -16,7 +16,7 @@ _handleButtonClick() {
     return(
       <div>
         <h4>
-          <button onClick={this._handleButtonClick}>{this.props.data.name}</button>
+          <button className="cocktail-button" onClick={this._handleButtonClick}>{this.props.data.name}</button>
         </h4>
       </div>
     )

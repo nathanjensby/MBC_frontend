@@ -1,6 +1,5 @@
 .App {
-  text-align: center;
-}
+background-color:white}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -8,22 +7,47 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-image: url('../public/liquoredit2.png');
+  background-size: cover;
+  height: 250px;
   padding: 20px;
-  color: white;
+  color: #000000;
+  text-align: center;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.App-header h2 {
+  font-size: 500%;
+  text-shadow: 2px 2px #4b42f4;
+
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-#main-container{
+.row{
   display: flex;
   justify-content: space-around;
+  max-width: 100%
+}
+
+#ingredients {
+  margin-left: 50px;
+}
+
+.main-column {
+  width:100%;
+  border-width: thin;
+  border-style: solid;
+  margin:5px;
+  padding:5px;
+}
+
+.cocktail-button {
+  background-color: #4b42f4;
+  border-radius: 3px;
+  color: white;
+  padding:10px;
 }
