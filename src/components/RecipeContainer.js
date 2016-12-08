@@ -17,15 +17,12 @@ class RecipeContainer extends Component {
     return(
       <div>
         <h2>
-          Recipe Container
-        </h2>
-        <h3>
           Cocktails
-        </h3>
-        <ul>
+        </h2>
+        <div>
           {this.props.recipes.map((recipe, i) =>
           <Cocktail grabRecipeId={this._grabRecipeId} data={recipe} key={i}/>)}
-        </ul>
+        </div>
       </div>
     )
   }
