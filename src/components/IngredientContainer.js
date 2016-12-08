@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import Ingredient from './Ingredient';
 import _ from 'lodash';
 import axios from 'axios';
-import update from 'immutability-helper';
 
 
 class IngredientContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:[],
-      selectedItems: {}
+      items:[]
       }
       this._selectIngredient = this._selectIngredient.bind(this)
       this._removeIngredient = this._removeIngredient.bind(this)
@@ -32,18 +30,11 @@ class IngredientContainer extends Component {
     )
   }
     _selectIngredient(item) {
-      // console.log("ingredient selected: ", this.props.id );
-      let oldSelected = this.state.selectedItems
-      const newSelected = update(oldSelected, {$merge:{[item]:true}});
-      this.setState({
-        selectedItems: newSelected
-      })
-      console.log(this.state.selectedItems);
+      this.props.selectItem(item)
     }
 
     _removeIngredient(item) {
-      const key = item
-      delete this.state.selectedItems[key]
+      this.props.removeItem(item)
     }
 
   render() {
