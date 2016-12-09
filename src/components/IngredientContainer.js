@@ -39,7 +39,6 @@ class IngredientContainer extends Component {
     }
 
     _handleSearch(e) {
-
       var text = e.target.value
       this.setState({
         text
@@ -54,7 +53,8 @@ class IngredientContainer extends Component {
       if (currentText === '') {
         return (
           this.state.items.map((item, i) =>
-          <Ingredient data={item} key={i} selectItem={this._selectIngredient}
+          <Ingredient data={item} key={i}
+           selectItem={this._selectIngredient}
           removeItem={this._removeIngredient} selectedItems={this.state.selectedItems} />))
         }
 
@@ -65,7 +65,8 @@ class IngredientContainer extends Component {
            )})
          return (
           filteredResults.map((item, i) =>
-         <Ingredient data={item} key={i} selectItem={this._selectIngredient}
+         <Ingredient data={item} key={i}
+           selectItem={this._selectIngredient}
          removeItem={this._removeIngredient} selectedItems={this.state.selectedItems} />))
       }
     }
