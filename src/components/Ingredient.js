@@ -9,8 +9,8 @@ class Ingredient extends Component {
     this._toggleCheck = this._toggleCheck.bind(this)
   }
   _toggleCheck() {
-    console.log(this.props.data.id);
     let itemId = this.props.data.id;
+    console.log("itemId", itemId);
     if (this.state.isChecked) {
       this.props.removeItem(itemId)
     } else {
