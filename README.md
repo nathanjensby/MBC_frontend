@@ -12,4 +12,7 @@ MyBarCart lets you select the items you already have and gives you recipes for c
 
 # Wireframes
 
-<img src="http://imgur.com/a/BG3Yt" />
+<img src="http://imgur.com/ZLWaval" />
+<img src="http://imgur.com/0IdWnLS" />
+<img src="http://imgur.com/ThnHFFh" />
+<img src="http://imgur.com/Y5ATlWU" />
