@@ -23,6 +23,10 @@ class App extends Component {
     this._handleRecipeClick = this._handleRecipeClick.bind(this)
   }
 
+  componentDidMount() {
+    this._loadRecipes()
+  }
+
   _addItemToSelected(item) {
     let oldSelected = this.state.selectedItems
     const newSelected = update(oldSelected, {$merge:{[item]:true}});
@@ -34,20 +38,14 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
-    this._loadRecipes()
-  }
-
   _removeItemFromSelected(item) {
     const key = item
     delete this.state.selectedItems[key]
-    console.log(this.state.selectedItems);
     this._loadRecipes()
   }
 
   _loadRecipes() {
     let itemsArray = Object.keys(this.state.selectedItems)
-    console.log(itemsArray);
     const url = itemsArray.length===0 ? "https://vast-castle-37901.herokuapp.com/recipes" :  "https://vast-castle-37901.herokuapp.com/items/"+itemsArray+"/recipes"
 
     axios.get(url).then((data) => {
@@ -68,22 +66,27 @@ class App extends Component {
       this.setState({
         selectedRecipe
       }, function() {
-        console.log("recipe: ", selectedRecipe);
         this._renderItemAmounts()
       })
     })
   }
 
   _renderItemAmounts() {
-    // console.log(this.state.selectedRecipe.measurements[1].amount);
-    let arr = this.state.selectedRecipe.measurements.map((amt, i) =>
-      amt.amount + " " + this.state.selectedRecipe.items[i].name)
+    // console.log("render item amounts", this.state.selectedRecipe.measurements)
+    // console.log("render items", this.state.selectedRecipe.items)
 
-    this.setState({
-      itemsAmounts: arr
-    }, function() {
-      console.log(this.state.itemsAmounts)
-    })
+    //map through measurements, create an array with amount and corresponding item
+
+    //arr is the array. amt.amount is the amount, plus the item (filtered from items) that has the same id as the amt.item_id
+
+
+    let arr = this.state.selectedRecipe.measurements.map((amt, i) =>
+      amt.amount + " " + this.state.selectedRecipe.items.filter(function(obj) {
+        // console.log(amt.item_id);
+        return obj.id === amt.item_id
+      })[0].name)
+
+    this.setState({ itemsAmounts: arr })
   }
 
   render() {

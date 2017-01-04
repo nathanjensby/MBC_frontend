@@ -24,32 +24,19 @@ class IngredientContainer extends Component {
   }
     // make ajax call to get all ingredients
     _getIngredients(){
-    axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
-      let items = data.data
-      this.setState({ items })
-      }
-    )
-  }
-    _selectIngredient(item) {
-      this.props.selectItem(item)
-    }
-
-    _removeIngredient(item) {
-      this.props.removeItem(item)
+      axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
+        let items = data.data
+        this.setState({ items })
+      })
     }
 
     _handleSearch(e) {
       var text = e.target.value
-      this.setState({
-        text
-      }, function() {
-        console.log("state update: ", this.state.text);
-      })
+      this.setState({ text })
     }
 
     _loadItems() {
       let currentText = this.state.text
-
       if (currentText === '') {
         return (
           this.state.items.map((item, i) =>
@@ -69,6 +56,14 @@ class IngredientContainer extends Component {
            selectItem={this._selectIngredient}
          removeItem={this._removeIngredient} selectedItems={this.state.selectedItems} />))
       }
+    }
+
+    _selectIngredient(item) {
+      this.props.selectItem(item)
+    }
+
+    _removeIngredient(item) {
+      this.props.removeItem(item)
     }
 
 
