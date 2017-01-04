@@ -74,9 +74,9 @@ class IngredientContainer extends Component {
         <div className='column-heading'>
           <h2>Ingredients</h2>
         </div>
-        <div>
+        {/* <div>
           <input id='search' type="text" placeholder='Search' ref="search" value={this.state.text} onChange={this._handleSearch}/>
-        </div>
+        </div> */}
         <div>
           {this._loadItems()}
         </div>
