@@ -24,32 +24,19 @@ class IngredientContainer extends Component {
   }
     // make ajax call to get all ingredients
     _getIngredients(){
-    axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
-      let items = data.data
-      this.setState({ items })
-      }
-    )
-  }
-    _selectIngredient(item) {
-      this.props.selectItem(item)
-    }
-
-    _removeIngredient(item) {
-      this.props.removeItem(item)
+      axios.get('https://vast-castle-37901.herokuapp.com/items/').then((data) => {
+        let items = data.data
+        this.setState({ items })
+      })
     }
 
     _handleSearch(e) {
       var text = e.target.value
-      this.setState({
-        text
-      }, function() {
-        console.log("state update: ", this.state.text);
-      })
+      this.setState({ text })
     }
 
     _loadItems() {
       let currentText = this.state.text
-
       if (currentText === '') {
         return (
           this.state.items.map((item, i) =>
@@ -71,6 +58,14 @@ class IngredientContainer extends Component {
       }
     }
 
+    _selectIngredient(item) {
+      this.props.selectItem(item)
+    }
+
+    _removeIngredient(item) {
+      this.props.removeItem(item)
+    }
+
 
   render() {
 
@@ -79,9 +74,9 @@ class IngredientContainer extends Component {
         <div className='column-heading'>
           <h2>Ingredients</h2>
         </div>
-        <div>
+        {/* <div>
           <input id='search' type="text" placeholder='Search' ref="search" value={this.state.text} onChange={this._handleSearch}/>
-        </div>
+        </div> */}
         <div>
           {this._loadItems()}
         </div>
