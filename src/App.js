@@ -50,8 +50,18 @@ class App extends Component {
 
     axios.get(url).then((data) => {
       let recipes = data.data
+      console.log("raw recipes", recipes);
+      var sortedRecipes = recipes.slice(0);
+      sortedRecipes.sort(function(a,b) {
+        var x = a.name.toLowerCase();
+        var y = b.name.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0
+      })
+
+      console.log("sortedRecipes: ", sortedRecipes)
+
       this.setState({
-        recipes
+        recipes: sortedRecipes
       })
       console.log(this.state.recipes);
       }
