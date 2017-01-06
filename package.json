@@ -1,5 +1,6 @@
 {
   "name": "MBC_frontend",
+  "homepage": "http://www.nathanjensby.com/MBC_frontend/",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
