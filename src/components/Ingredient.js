@@ -25,8 +25,7 @@ class Ingredient extends Component {
     return (
       <div className="ingredient">
         <label>
-          <input type="checkbox" checked={this.state.isChecked} onChange={this._toggleCheck}/>
-          {this.props.data.name}
+          <input type="checkbox" checked={this.state.isChecked} onChange={this._toggleCheck}/> {this.props.data.name}
         </label>
       </div>
     )

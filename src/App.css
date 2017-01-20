@@ -60,7 +60,7 @@ color: white;
   border-style: solid;
   margin:5px;
   padding:10px 20px;
-background-color: rgb(75,73,70);}
+  background-color: rgb(75,73,70);}
 
 .column-heading {
   border-width: medium;
@@ -70,6 +70,7 @@ background-color: rgb(75,73,70);}
   justify-content: center;
   margin:10px;
   background-color: rgb(104,56,26);
+  font-family: var(--fredFont);
 }
 
 .column-heading h2 {
@@ -79,16 +80,19 @@ background-color: rgb(75,73,70);}
 }
 
 .ingredient {
-  margin: 5px 0 0 0;
+  margin: 10px 0 0 5px;
+  font-family: var(--raleway);
 }
 
 .recipe-ingredient{
  font-size: 20px;
+ font-family: var(--raleway);
 }
 
 .instructions {
  font-size: 18px;
  margin-top: 25px;
+ font-family: var(--raleway);
 }
 
 .cocktail-button {
@@ -96,4 +100,5 @@ background-color: rgb(75,73,70);}
   border-radius: 10px;
   color: white;
   padding:10px;
+  font-family: var(--raleway);
 }
