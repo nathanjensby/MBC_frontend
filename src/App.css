@@ -60,7 +60,10 @@ color: white;
   border-style: solid;
   margin:5px;
   padding:10px 20px;
-  background-color: rgb(75,73,70);}
+  background-color: rgb(75,73,70);
+  border-radius: 10px;
+
+}
 
 .column-heading {
   border-width: medium;
@@ -71,6 +74,7 @@ color: white;
   margin:10px;
   background-color: rgb(104,56,26);
   font-family: var(--fredFont);
+  border-radius: 10px;
 }
 
 .column-heading h2 {
