@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import IngredientContainer from './Components/IngredientContainer';
-import RecipeContainer from './Components/RecipeContainer';
+import './css/App.css';
+import IngredientContainer from './Containers/IngredientContainer';
+import RecipeContainer from './Containers/RecipeContainer';
 import update from 'immutability-helper';
 import axios from 'axios';
 import Recipe from './Components/Recipe';

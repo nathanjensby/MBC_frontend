@@ -15,7 +15,7 @@
 }
 
 .App-header {
-    background-image: url('../public/barcartimage.jpg');
+    background-image: url('../../public/barcartimage.jpg');
     background-size: cover;
     height: 250px;
     padding: 20px;

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Recipe = () => {
+const Recipe = (props) => {
 
     return (
         <div>
@@ -8,12 +8,12 @@ const Recipe = () => {
                 <h2>Recipe</h2>
             </div>
             <ul>
-                {this.props.itemsAmounts.map((item, i) => {
+                {props.itemsAmounts.map((item, i) => {
                         <li className="recipe-ingredient" key={i}>{item}</li>
                         }
                 )}
             </ul>
-            <p className="instructions">{this.props.recipe.instructions}</p>
+            <p className="instructions">{props.recipe.instructions}</p>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Ingredient from '../Components/Ingredient';
+import Ingredient from '../Components/Ingredient.jsx';
 // import Search from './Search';
 import _ from 'lodash';
 import axios from 'axios';
@@ -11,7 +11,8 @@ class IngredientContainer extends Component {
         this.state = {
             items:[],
             text: ''
-        }
+        };
+
         this._selectIngredient = this._selectIngredient.bind(this)
         this._removeIngredient = this._removeIngredient.bind(this)
         this._getIngredients = this._getIngredients.bind(this)
@@ -71,9 +72,7 @@ class IngredientContainer extends Component {
         this.props.removeItem(item)
     }
 
-
     render() {
-
         return (
             <div>
                 <div className='column-heading'>
